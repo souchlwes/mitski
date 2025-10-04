@@ -1,37 +1,52 @@
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   background-color: #2e1e3f;
   font-family: 'Courier New', monospace;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  overflow: hidden;
 }
 
 .room {
   position: relative;
-  width: 320px;
-  height: 240px;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .background {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   image-rendering: pixelated;
+  z-index: 0;
 }
 
 .player-overlay {
   position: absolute;
-  bottom: 40px;
-  left: 190px;
-  width: 40px;
-  height: 40px;
+  left: 59.5%;
+  top: 72.5%;
+  width: 6vw;
+  height: 6vw;
+  max-width: 40px;
+  max-height: 40px;
+  transform: translate(-50%, -50%);
   z-index: 2;
 }
 
 .needle {
   width: 100%;
+  height: auto;
   cursor: pointer;
   image-rendering: pixelated;
   transition: transform 0.3s ease, filter 0.3s ease;
@@ -44,27 +59,25 @@ body {
 
 .song-title {
   position: absolute;
-  bottom: 5px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   color: #f8f0ff;
-  font-size: 12px;
+  font-size: 14px;
   background-color: rgba(0,0,0,0.4);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-family: 'Courier New', monospace;
-  image-rendering: pixelated;
+  padding: 4px 8px;
+  border-radius: 6px;
+  z-index: 3;
 }
 
 .ui-toggle {
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 12px;
+  font-size: 14px;
   color: #fff;
   background: rgba(0,0,0,0.4);
-  padding: 4px 8px;
+  padding: 6px 10px;
   border-radius: 6px;
-  font-family: 'Courier New', monospace;
-  z-index: 10;
+  z-index: 3;
 }
