@@ -1,10 +1,12 @@
+
 const playBtn = document.getElementById('playBtn');
 const audio = document.getElementById('audio');
-const ambient = document.getElementById('ambient');
-const ambientToggle = document.getElementById('ambientToggle');
-const reelLeft = document.getElementById('reelLeft');
-const reelRight = document.getElementById('reelRight');
 const trackSelect = document.getElementById('trackSelect');
+const volumeSlider = document.getElementById('volumeSlider');
+const balanceSlider = document.getElementById('balanceSlider');
+const visualizerBars = document.querySelectorAll('.bar');
+const closeBtn = document.querySelector('.close-btn');
+const playerWindow = document.getElementById('playerWindow');
 
 // Song links
 const tracks = {
@@ -15,39 +17,51 @@ const tracks = {
 // Load default track
 audio.src = tracks[trackSelect.value];
 
+// Track switching
 trackSelect.addEventListener('change', () => {
   audio.pause();
   playBtn.textContent = '▶';
-  reelLeft.classList.remove('spin');
-  reelRight.classList.remove('spin');
+  toggleVisualizer(false);
   audio.src = tracks[trackSelect.value];
 });
 
+// Play/pause toggle
 playBtn.addEventListener('click', () => {
   if (audio.paused) {
     audio.play();
     playBtn.textContent = '⏸';
-    reelLeft.classList.add('spin');
-    reelRight.classList.add('spin');
+    toggleVisualizer(true);
   } else {
     audio.pause();
     playBtn.textContent = '▶';
-    reelLeft.classList.remove('spin');
-    reelRight.classList.remove('spin');
+    toggleVisualizer(false);
   }
 });
 
+// Reset visualizer when track ends
 audio.addEventListener('ended', () => {
   playBtn.textContent = '▶';
-  reelLeft.classList.remove('spin');
-  reelRight.classList.remove('spin');
+  toggleVisualizer(false);
 });
 
-ambientToggle.addEventListener('change', () => {
-  if (ambientToggle.checked) {
-    ambient.volume = 0.3;
-    ambient.play();
-  } else {
-    ambient.pause();
-  }
+// Volume control
+volumeSlider.addEventListener('input', () => {
+  audio.volume = volumeSlider.value / 100;
+});
+
+// Balance control (visual only)
+balanceSlider.addEventListener('input', () => {
+  // Optional: animate balance UI or display value
+});
+
+// Visualizer animation toggle
+function toggleVisualizer(active) {
+  visualizerBars.forEach(bar => {
+    bar.style.animationPlayState = active ? 'running' : 'paused';
+  });
+}
+
+// Close button
+closeBtn.addEventListener('click', () => {
+  playerWindow.style.display = 'none';
 });
