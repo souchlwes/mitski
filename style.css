@@ -5,20 +5,16 @@
 }
 
 body {
-  background-color: #2e1e3f;
+  background-color: #1a2b1f;
   font-family: 'Courier New', monospace;
   height: 100vh;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .room {
   position: relative;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
 }
 
 .background {
@@ -32,42 +28,59 @@ body {
   z-index: 0;
 }
 
-.player-overlay {
+.boombox-ui {
   position: absolute;
-  left: 59.5%;
-  top: 72.5%;
-  width: 6vw;
-  height: 6vw;
-  max-width: 40px;
-  max-height: 40px;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-
-.needle {
-  width: 100%;
-  height: auto;
-  cursor: pointer;
-  image-rendering: pixelated;
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.needle.glowing {
-  filter: drop-shadow(0 0 6px #ffccff);
-  transform: rotate(10deg);
-}
-
-.song-title {
-  position: absolute;
-  bottom: 10px;
+  bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
-  color: #f8f0ff;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#trackSelect {
   font-size: 14px;
-  background-color: rgba(0,0,0,0.4);
   padding: 4px 8px;
   border-radius: 6px;
-  z-index: 3;
+  background-color: rgba(0,0,0,0.4);
+  color: #fff;
+  border: none;
+  font-family: 'Courier New', monospace;
+}
+
+#playBtn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background-color: rgba(0,0,0,0.4);
+  font-family: 'Courier New', monospace;
+}
+
+.tape-reels {
+  display: flex;
+  gap: 40px;
+}
+
+.reel {
+  width: 40px;
+  height: 40px;
+  image-rendering: pixelated;
+  transition: transform 0.3s ease;
+}
+
+.reel.spin {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .ui-toggle {
