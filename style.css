@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  background-color: #2e1e3f;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.room {
+  position: relative;
+  width: 320px;
+  height: 240px;
+}
+
+.background {
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.player-overlay {
+  position: absolute;
+  bottom: 40px;
+  left: 190px;
+  width: 40px;
+  height: 40px;
+  z-index: 2;
+}
+
+.needle {
+  width: 100%;
+  cursor: pointer;
+  image-rendering: pixelated;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.needle.glowing {
+  filter: drop-shadow(0 0 6px #ffccff);
+  transform: rotate(10deg);
+}
+
+.song-title {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #f8f0ff;
+  font-size: 12px;
+  background-color: rgba(0,0,0,0.4);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  image-rendering: pixelated;
+}
+
+.ui-toggle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 12px;
+  color: #fff;
+  background: rgba(0,0,0,0.4);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  z-index: 10;
+}
