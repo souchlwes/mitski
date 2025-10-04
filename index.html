@@ -1,40 +1,53 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Boombox Room</title>
+  <title>Retro Media Player</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="ui-toggle">
-    <label>
-      <input type="checkbox" id="ambientToggle" />
-      <span>🌌 Ambient</span>
-    </label>
+  <div id="bootScreen">
+    <div class="boot-text">Starting Retro OS...</div>
   </div>
 
-  <div class="room">
-    <img src="assets/room-boombox.png" alt="Boombox Room" class="background" />
+  <div class="window" id="playerWindow">
+    <div class="title-bar">
+      <span class="title">Windows Media Player</span>
+      <button class="close-btn">✕</button>
+    </div>
 
-    <div class="boombox-ui">
-      <select id="trackSelect">
-        <option value="my-love">♪ My Love Mine All Mine</option>
-        <option value="love-me">♪ Love Me Different</option>
-      </select>
+    <div class="player-skin">
+      <img src="assets/player-skin.png" alt="Retro Media Player" class="background" />
 
-      <button id="playBtn">▶</button>
+      <div class="overlay">
+        <button id="playBtn" class="control-btn" title="Play / Pause">▶</button>
 
-      <div class="tape-reels">
-        <img src="assets/tape-left.png" class="reel" id="reelLeft" />
-        <img src="assets/tape-right.png" class="reel" id="reelRight" />
+        <select id="trackSelect" class="dropdown" title="Choose a track">
+          <option value="my-love">♪ My Love Mine All Mine</option>
+          <option value="love-me">♪ Love Me Different</option>
+        </select>
+
+        <div class="visualizer" title="Visualizer">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+
+        <div class="sliders">
+          <label>Volume</label>
+          <input type="range" id="volumeSlider" min="0" max="100" value="30" title="Volume" />
+          <label>Balance</label>
+          <input type="range" id="balanceSlider" min="-100" max="100" value="0" title="Balance" />
+        </div>
       </div>
     </div>
   </div>
 
   <audio id="audio"></audio>
-  <audio id="ambient" src="assets/ambient.mp3" loop></audio>
-
   <script src="script.js"></script>
 </body>
 </html>
