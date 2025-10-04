@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pixel Vinyl Room</title>
+  <title>Boombox Room</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -15,16 +15,24 @@
   </div>
 
   <div class="room">
-    <img src="assets/room.png" alt="Cozy Room" class="background" />
+    <img src="assets/room-boombox.png" alt="Boombox Room" class="background" />
 
-    <div class="player-overlay">
-      <img src="assets/needle-glow.png" alt="Needle Glow" id="needle" class="needle" />
+    <div class="boombox-ui">
+      <select id="trackSelect">
+        <option value="my-love">♪ My Love Mine All Mine</option>
+        <option value="love-me">♪ Love Me Different</option>
+      </select>
+
+      <button id="playBtn">▶</button>
+
+      <div class="tape-reels">
+        <img src="assets/tape-left.png" class="reel" id="reelLeft" />
+        <img src="assets/tape-right.png" class="reel" id="reelRight" />
+      </div>
     </div>
-
-    <div class="song-title">♪ MY LOVE MINE ALL MINE</div>
   </div>
 
-  <audio id="audio" src="https://www.dropbox.com/scl/fi/nd2dr7h8m57srtdxh4srn/my-love-mine-all-mine.mp3?rlkey=scw9falswi1lcko6dnyiymxmd&st=67n1zr5g&raw=1"></audio>
+  <audio id="audio"></audio>
   <audio id="ambient" src="assets/ambient.mp3" loop></audio>
 
   <script src="script.js"></script>
